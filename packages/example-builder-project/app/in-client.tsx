@@ -12,9 +12,9 @@ const auth = OAuthStrategy({
   clientId: "2fb39349-3744-4242-920d-9ccd74af3229"
 });
 
-const host = createBuilderHost({
-  [cartStore.id]: cartStoreService
-}, auth);
+const host = createBuilderHost(new Map([
+  [cartStore, cartStoreService]
+]), auth);
 
 export function Home() {
   return (

@@ -1,1 +1,1 @@
-export * as cartStore from "./cart-store/definition";
+export { cartStore } from "./cart-store/definition";

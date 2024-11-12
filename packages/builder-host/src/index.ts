@@ -2,33 +2,39 @@ import {
   AuthenticationStrategy,
   createClient,
   Host,
+  HostModule,
   WixClient,
 } from "@wix/sdk";
 
 export type BuilderHost = Host & {
-  getService<T>(compId: string): T;
+  getService<T>(definition: HostModule<T, BuilderHost>): T;
   withClient<T>(callback: (client: WixClient) => T): T;
 };
 
 export function createBuilderHost(
-  servicesMap: {
-    [compId: string]: (client: WixClient) => unknown;
-  },
+  servicesMap: Map<
+    HostModule<unknown, BuilderHost>,
+    (client: WixClient) => unknown
+  >,
   auth: AuthenticationStrategy
 ): BuilderHost {
-  const initializedServices = {} as Record<string, unknown>;
+  const initializedServices = new Map<
+    HostModule<unknown, BuilderHost>,
+    unknown
+  >();
   return {
     withClient<T>(callback: (client: WixClient) => T) {
       return callback(createClient({ auth, host: this }));
     },
 
-    getService<T>(compId: string): T {
-      if (!initializedServices[compId]) {
-        initializedServices[compId] = servicesMap[compId](
-          createClient({ auth, host: this })
+    getService<T>(definition: HostModule<T, BuilderHost>): T {
+      if (!initializedServices.has(definition)) {
+        initializedServices.set(
+          definition,
+          servicesMap.get(definition)!(createClient({ auth, host: this }))
         );
       }
-      return initializedServices[compId] as T;
+      return initializedServices.get(definition) as T;
     },
     channel: {
       observeState(callback) {

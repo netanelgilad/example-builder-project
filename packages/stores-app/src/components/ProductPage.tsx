@@ -12,7 +12,7 @@ export function ProductPage() {
   }, cartStore: {
     reloadCart
   } } =
-    useWixModules({ products, currentCart, cartStore: cartStore.cartStore });
+    useWixModules({ products, currentCart, cartStore: cartStore });
 
   const [acmeMug, setAcmeMug] = useState<products.Product | null>(null);
 
