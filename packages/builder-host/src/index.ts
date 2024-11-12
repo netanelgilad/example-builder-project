@@ -8,7 +8,6 @@ import {
 
 export type BuilderHost = Host & {
   getService<T>(definition: HostModule<T, BuilderHost>): T;
-  withClient<T>(callback: (client: WixClient) => T): T;
 };
 
 export function createBuilderHost(
@@ -23,10 +22,6 @@ export function createBuilderHost(
     unknown
   >();
   return {
-    withClient<T>(callback: (client: WixClient) => T) {
-      return callback(createClient({ auth, host: this }));
-    },
-
     getService<T>(definition: HostModule<T, BuilderHost>): T {
       if (!initializedServices.has(definition)) {
         initializedServices.set(
