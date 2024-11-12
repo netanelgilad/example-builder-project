@@ -6,6 +6,7 @@ import CartIcon from "./ecom/components/CartIcon";
 import { CART_STORE_SERVICE_COMP_ID } from "./ecom/generated/cartStore";
 import cartStore from "./ecom/services/cartStore";
 import { ProductPage } from "./stores/components/ProductPage";
+import { VisualWrapper } from "./VisualWrapper";
 
 const auth = OAuthStrategy({
     clientId: "2fb39349-3744-4242-920d-9ccd74af3229"
@@ -18,8 +19,10 @@ const host = createBuilderHost({
 export function Home() {
     return (
         <WixProvider host={host} auth={auth}>
-            <CartIcon />
-            <ProductPage />
+            <VisualWrapper>
+                <CartIcon />
+                <ProductPage />
+            </VisualWrapper>
         </WixProvider>
     );
 }

@@ -38,3 +38,5 @@ export function ProductPage() {
         </div>
     );
 }
+
+ProductPage.displayName = "ProductPage";
