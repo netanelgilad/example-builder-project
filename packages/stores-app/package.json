@@ -1,0 +1,13 @@
+{
+  "name": "@wix/stores-app",
+  "type": "module",
+  "exports": {
+    "./components": "./dist/components/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@wix/ecom-app",
+  "type": "module",
+  "exports": {
+    "./services": "./dist/services/index.js",
+    "./services-definitions": "./dist/services/definitions.js",
+    "./components": "./dist/components/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
