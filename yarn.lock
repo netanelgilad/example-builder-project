@@ -503,6 +503,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.59.20":
+  version: 5.59.20
+  resolution: "@tanstack/query-core@npm:5.59.20"
+  checksum: 10c0/c93a8d41e21db532e92c1c90916bec578729d32d1f39d655603b9e81a9d5aebc8588a4d6a75928e04d3ddc90e71a1f8dc066a61d0ba24108eaf60cc2ce024a2f
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.59.20":
+  version: 5.59.20
+  resolution: "@tanstack/react-query@npm:5.59.20"
+  dependencies:
+    "@tanstack/query-core": "npm:5.59.20"
+  peerDependencies:
+    react: ^18 || ^19
+  checksum: 10c0/fc3342c3a26c51c866d54082d14f86b2f644847ea8f9051000e529a012ea5437e18e35f999fcc453b2eecb0faaf29bd1aaec0956587ade63ba02262d6737800a
+  languageName: node
+  linkType: hard
+
 "@types/json5@npm:^0.0.29":
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
@@ -668,7 +686,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/builder-host@workspace:packages/builder-host":
+"@wix/builder-host@workspace:*, @wix/builder-host@workspace:packages/builder-host":
   version: 0.0.0-use.local
   resolution: "@wix/builder-host@workspace:packages/builder-host"
   dependencies:
@@ -681,6 +699,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@wix/ecom-app@workspace:packages/ecom-app"
   dependencies:
+    "@wix/our-state-manager": "workspace:*"
+    "@wix/sdk-runtime-extended": "workspace:*"
     typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
@@ -1297,6 +1317,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@wix/our-state-manager@workspace:*, @wix/our-state-manager@workspace:packages/our-state-manager":
+  version: 0.0.0-use.local
+  resolution: "@wix/our-state-manager@workspace:packages/our-state-manager"
+  dependencies:
+    "@nanostores/react": "npm:^0.8.0"
+    "@wix/sdk": "npm:^1.14.2"
+    nanostores: "npm:^0.11.3"
+    typescript: "npm:^5.6.3"
+  languageName: unknown
+  linkType: soft
+
 "@wix/redirects@npm:^1.0.58":
   version: 1.0.60
   resolution: "@wix/redirects@npm:1.0.60"
@@ -1335,6 +1366,17 @@ __metadata:
   checksum: 10c0/328c2946e7f69771d78475f798dda3fd158c756b116cf6ced098732788aaa69f49590a6eb0ed1c4ea82a79c6b682499c155407d8af8c27ca4f1fed374ee1c885
   languageName: node
   linkType: hard
+
+"@wix/sdk-runtime-extended@workspace:*, @wix/sdk-runtime-extended@workspace:packages/sdk-runtime-extended":
+  version: 0.0.0-use.local
+  resolution: "@wix/sdk-runtime-extended@workspace:packages/sdk-runtime-extended"
+  dependencies:
+    "@wix/builder-host": "workspace:*"
+    "@wix/sdk": "npm:^1.14.2"
+    "@wix/sdk-runtime": "npm:^0.3.23"
+    typescript: "npm:^5.6.3"
+  languageName: unknown
+  linkType: soft
 
 "@wix/sdk-runtime@npm:0.3.22":
   version: 0.3.22
@@ -1406,6 +1448,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@wix/stores-app@workspace:packages/stores-app"
   dependencies:
+    "@tanstack/react-query": "npm:^5.59.20"
     typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft

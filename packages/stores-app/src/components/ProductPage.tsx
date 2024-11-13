@@ -1,10 +1,12 @@
+import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { currentCart } from "@wix/ecom";
+import { cartStore } from "@wix/ecom-app/services-definitions";
 import { useWixModules } from "@wix/sdk-react";
 import { products } from "@wix/stores";
-import { useEffect, useState } from "react";
-import { cartStore } from "@wix/ecom-app/services-definitions";
 
-export function ProductPage() {
+const queryClient = new QueryClient();
+
+export function ProductPageInner() {
   const { products: {
     queryProducts
   }, currentCart: {
@@ -14,16 +16,17 @@ export function ProductPage() {
   } } =
     useWixModules({ products, currentCart, cartStore: cartStore });
 
-  const [acmeMug, setAcmeMug] = useState<products.Product | null>(null);
+  const { data: acmeMug, isLoading } = useQuery({
+    queryKey: ["product"],
+    queryFn: () => queryProducts().eq("slug", "acme-mug").find().then((result) => result.items[0] ?? null),
+  });
 
-  useEffect(() => {
-    queryProducts().eq("slug", "acme-mug").find().then((result) => {
-      setAcmeMug(result.items[0] ?? null);
-    });
-  }, [queryProducts]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (!acmeMug) {
-    return <div>Loading...</div>;
+    return <div>Product not found</div>;
   }
 
   return (
@@ -43,6 +46,14 @@ export function ProductPage() {
         await reloadCart();
       }}>Add to Cart</button>
     </div>
+  );
+}
+
+export function ProductPage() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ProductPageInner />
+    </QueryClientProvider>
   );
 }
 

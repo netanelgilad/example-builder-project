@@ -1,10 +1,11 @@
 import { currentCart } from "@wix/ecom";
-import { WixClient } from "@wix/sdk";
-import { atom } from "nanostores";
+import { provide } from "@wix/sdk-runtime-extended";
+import { atom } from "@wix/our-state-manager";
+import { cartStore } from "./definition";
 
 const $currentCart = atom<currentCart.Cart | null>(null);
 
-export default function cartStore(client: WixClient) {
+export default provide(cartStore, (client) => {
   return {
     reloadCart: async () => {
       const cart = await client.use(currentCart).getCurrentCart();
@@ -12,4 +13,4 @@ export default function cartStore(client: WixClient) {
     },
     $currentCart,
   };
-}
+});
