@@ -1,7 +1,7 @@
 'use client';
 import { OAuthStrategy } from "@wix/sdk";
 import { WixProvider } from "@wix/sdk-react";
-import { createBuilderHost } from "@wix/builder-host";
+import { createBuilderHost } from "@wix/sdk-runtime-extended";
 import { CartIcon } from "@wix/ecom-app/components";
 import { cartStore } from "@wix/ecom-app/services-definitions";
 import { cartStore as cartStoreService } from "@wix/ecom-app/services";
