@@ -701,6 +701,7 @@ __metadata:
   dependencies:
     "@wix/our-state-manager": "workspace:*"
     "@wix/sdk-runtime-extended": "workspace:*"
+    p-debounce: "npm:^4.0.0"
     typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
@@ -4181,6 +4182,13 @@ __metadata:
     type-check: "npm:^0.4.0"
     word-wrap: "npm:^1.2.5"
   checksum: 10c0/4afb687a059ee65b61df74dfe87d8d6815cd6883cb8b3d5883a910df72d0f5d029821f37025e4bccf4048873dbdb09acc6d303d27b8f76b1a80dd5a7d5334675
+  languageName: node
+  linkType: hard
+
+"p-debounce@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "p-debounce@npm:4.0.0"
+  checksum: 10c0/2d50bcb53659ad4345ef59b220581ccb40d581528949d8c63547c22b418e9a92f5138617eb2f41cd03bed293ee78a3dbb9b2795f572a4044434b89f058ccdfa2
   languageName: node
   linkType: hard
 

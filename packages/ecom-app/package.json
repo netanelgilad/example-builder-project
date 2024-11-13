@@ -9,6 +9,9 @@
   "scripts": {
     "build": "tsc"
   },
+  "dependencies": {
+    "p-debounce": "^4.0.0"
+  },
   "devDependencies": {
     "@wix/our-state-manager": "workspace:*",
     "@wix/sdk-runtime-extended": "workspace:*",

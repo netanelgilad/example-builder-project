@@ -8,4 +8,8 @@ export type CartStore = {
   $currentCart: ReturnType<typeof atom<currentCart.Cart | null>>;
 };
 
-export const cartStore = defineService<CartStore>(serviceJson.id);
+export type Config = {
+  reloadDebouceTime?: number;
+};
+
+export const cartStore = defineService<CartStore, Config>(serviceJson.id);
