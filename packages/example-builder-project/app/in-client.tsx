@@ -13,7 +13,7 @@ const auth = OAuthStrategy({
 });
 
 const host = createBuilderHost(new Map([
-  [cartStore, cartStoreService]
+  [cartStore.id, cartStoreService]
 ]), auth);
 
 export function Home() {

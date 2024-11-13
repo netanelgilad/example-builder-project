@@ -7,29 +7,29 @@ import {
 } from "@wix/sdk";
 
 export type BuilderHost = Host & {
-  getService<T>(definition: HostModule<T, BuilderHost>): T;
+  getService<T>(extensionId: string): T;
 };
 
 export function createBuilderHost(
   servicesMap: Map<
-    HostModule<unknown, BuilderHost>,
+    string, // extension id
     (client: WixClient) => unknown
   >,
   auth: AuthenticationStrategy
 ): BuilderHost {
   const initializedServices = new Map<
-    HostModule<unknown, BuilderHost>,
+    string, // extension id
     unknown
   >();
   return {
-    getService<T>(definition: HostModule<T, BuilderHost>): T {
-      if (!initializedServices.has(definition)) {
+    getService<T>(extensionId: string): T {
+      if (!initializedServices.has(extensionId)) {
         initializedServices.set(
-          definition,
-          servicesMap.get(definition)!(createClient({ auth, host: this }))
+          extensionId,
+          servicesMap.get(extensionId)!(createClient({ auth, host: this }))
         );
       }
-      return initializedServices.get(definition) as T;
+      return initializedServices.get(extensionId) as T;
     },
     channel: {
       observeState(callback) {
