@@ -7,18 +7,14 @@ import { products } from "@wix/stores";
 const queryClient = new QueryClient();
 
 export function ProductPageInner() {
-  const { products: {
-    queryProducts
-  }, currentCart: {
-    addToCurrentCart
-  }, cartStore: {
-    reloadCart
-  } } =
-    useWixModules({ products, currentCart, cartStore: cartStore });
+  const { queryProducts } = useWixModules(products);
+  const { addToCurrentCart } = useWixModules(currentCart);
+  const { reloadCart } = useWixModules(cartStore);
 
   const { data: acmeMug, isLoading } = useQuery({
     queryKey: ["product"],
-    queryFn: () => queryProducts().eq("slug", "acme-mug").find().then((result) => result.items[0] ?? null),
+    queryFn: () => queryProducts().eq("slug", "acme-mug")
+      .find().then((result) => result.items[0] ?? null),
   });
 
   if (isLoading) {
