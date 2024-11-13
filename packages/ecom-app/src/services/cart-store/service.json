@@ -1,6 +1,16 @@
 {
   "id": "71ea5e1b-ff4b-46c6-a4f8-0b35aa79ca37",
   "exportedName": "cartStore",
+  "definition": {
+    "package": {
+      "name": "@wix/ecom-app-cart-store",
+      "version": "1.0.0"
+    },
+    "import": {
+      "specifier": "services",
+      "namedImport": "cartStoreDefinition"
+    }
+  },
   "runtime": {
     "npm": {
       "package": {
@@ -9,12 +19,9 @@
       },
       "import": {
         "specifier": "services",
-        "namedImport": "cartStore"
+        "namedImport": "cartStoreImplementation"
       }
     },
-    "bundle": {
-      "runtime": "some-url",
-      "types": "some-url"
-    }
+    "bundleUrl": "some-url"
   }
 }

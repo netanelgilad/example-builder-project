@@ -1,6 +1,6 @@
 import { currentCart } from "@wix/ecom";
 import { defineService } from "@wix/sdk-runtime-extended";
-import { atom } from "nanostores";
+import { atom } from "@wix/our-state-manager";
 import serviceJson from "./service.json";
 
 export type CartStore = {
