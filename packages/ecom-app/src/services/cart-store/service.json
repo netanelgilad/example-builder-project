@@ -11,7 +11,7 @@
       "namedImport": "cartStoreDefinition"
     }
   },
-  "runtime": {
+  "defaultImplementation": {
     "npm": {
       "package": {
         "name": "@wix/ecom-app-cart-store",
