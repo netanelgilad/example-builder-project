@@ -11,7 +11,9 @@ export function CartIcon() {
   return (
     <div>
       <button onClick={reloadCart}>Reload Cart</button>
-      <pre>Number of Items: {(cart?.lineItems ?? []).reduce((acc, item) => acc + (item.quantity ?? 0), 0)}</pre>
+      <pre>Number of Items: {(cart?.lineItems ?? [])
+        .reduce((acc, item) => acc + (item.quantity ?? 0), 0)}
+      </pre>
     </div>
   );
 }
