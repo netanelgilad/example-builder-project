@@ -5,6 +5,7 @@ import {
   WixClient,
 } from "@wix/sdk";
 import { HostModule } from "@wix/sdk-runtime/host-modules";
+import * as nanostores from "nanostores";
 
 type ServiceDefinition<TAPI, TConfig> = HostModule<TAPI, BuilderHost> & {
   id: string;
@@ -15,7 +16,10 @@ type ServiceAPI<T extends ServiceDefinition<any, any>> =
   T extends ServiceDefinition<infer TAPI, any> ? TAPI : never;
 type ServiceFactory<T extends ServiceDefinition<any, any>> = (
   config: ServiceConfig<T>,
-  client: WixClient
+  opts: {
+    client: WixClient;
+    signals: typeof import("nanostores");
+  }
 ) => ServiceAPI<T>;
 
 export function provide<T extends ServiceDefinition<any, any>>(
@@ -67,7 +71,10 @@ export function createBuilderHost(
 
         initializedServices.set(
           extensionId,
-          service.impl(service.config, createClient({ auth, host: this }))
+          service.impl(service.config, {
+            client: createClient({ auth, host: this }),
+            signals: nanostores,
+          })
         );
       }
       return initializedServices.get(extensionId) as T;
