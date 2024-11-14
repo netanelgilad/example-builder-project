@@ -1,6 +1,6 @@
 
 import { useWixModules } from '@wix/sdk-react';
-import { useStore } from '@wix/our-state-manager';
+import { useStore } from '@wix/sdk-runtime-extended';
 import { cartStore } from '../services/cart-store/definition';
 import React from 'react';
 

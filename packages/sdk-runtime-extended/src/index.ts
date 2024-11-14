@@ -7,6 +7,9 @@ import {
 import { HostModule } from "@wix/sdk-runtime/host-modules";
 import * as nanostores from "nanostores";
 
+export * from "nanostores";
+export * from "@nanostores/react";
+
 type ServiceDefinition<TAPI, TConfig> = HostModule<TAPI, BuilderHost> & {
   id: string;
 } & { __config?: TConfig };
